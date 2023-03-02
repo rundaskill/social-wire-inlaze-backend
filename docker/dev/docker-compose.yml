@@ -1,12 +1,12 @@
 version: '3.8'
 services:
-  mysql: #contenedor de mysql
+  mysqlsocialwire: #contenedor de mysql
     image: mysql:5.7
-    container_name: mysql_social_wire
+    container_name: mysqlsocialwire
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
-      - ./mysql_social_wire:/var/lib/mysql
+      - ./mysqlsocialwire:/var/lib/mysql
     environment:
       MYSQL_DATABASE: 'homestead'
       MYSQL_USER: 'homestead'
@@ -16,32 +16,29 @@ services:
       SERVICE_NAME: mysql
     networks:
       - inlazeSicial
-  app:
-    container_name: social_wire_backend
+  socialwirebackend:
+    container_name: socialwirebackend
     image: inlaze/social-wire-backend:0.0.1 #llama la imagen
     tty: true
     restart: always
     ports:
       - 4501:3000 #El puerto de salida API
-      # - 4101:4101 #El puerto de salida SOCKETIO
     environment: #las variable de entorno
-      - MYSQL_HOST_DM=mysql_social_wire
+      - MYSQL_HOST_DM=mysqlsocialwire
       - MYSQL_PORT_DM=3306
       - MYSQL_DATABASE_NAME_DM=homestead
       - MYSQL_ROOT_USER_DM=root
       - MYSQL_ROOT_PASSWORD_DM=secret.root
-      - DATASOCKETIO.SERVER.PORT=4101
-      # - SOCKETIO.SERVER.PATH=
-      # - SOCKETIO.SERVER.CORS.ORIGIN='*'
+      - JWT_SECRET='$prueba'
       - PORT=3000
     depends_on:
-      - mysql_social_wire
+      - mysqlsocialwire
     networks:
       - inlazeSicial
 networks:
-  mytnetturno:
+  inlazeSicial:
     driver: bridge
     name: inlazeSicial
 volumes:
-  mysql_data_turno:
-    name: mysql_data_turno
+  mysqlsocialwire:
+    name: mysqlsocialwire
