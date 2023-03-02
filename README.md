@@ -36,7 +36,7 @@ El sistema está utilizando nestjs para Backend y en gestor de base de datos mys
 
 - Docker
 - Docker compose
-- Postman: Para mirar la documentación de las api
+- Postman: Para mirar la documentación de las api https://github.com/rundaskill/social-wire-inlaze-backend/tree/master/docs
 
 ### Installation
 
