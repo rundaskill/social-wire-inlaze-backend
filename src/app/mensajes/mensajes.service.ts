@@ -57,7 +57,7 @@ export class MensajesService {
       title:`%${filtro.title}%`
     }).orWhere("CONVERT(mensaje.creado_at,char) like :creado_at",{
       creado_at:`%${filtro.creado_at}%`
-    }).orderBy("creado_at","DESC").getMany()
+    }).orderBy("mensaje.creado_at","DESC").getMany()
   }
   /**
    * Metodo para obtener todo los mensaje del usuario
@@ -65,12 +65,12 @@ export class MensajesService {
    * @param user User
    * @returns Promise<Mensaje[]>
    */
-  findMeMensaje(user:User):Promise<Mensaje[]> {
+  findMeMensaje(user:any):Promise<Mensaje[]> {
     return this.messageRepository.createQueryBuilder("mensaje")
     .leftJoinAndSelect("mensaje.user", "user")
     .where("user.id = :userId",{
       userId:user.id
-    }).orderBy("creado_at","DESC").getMany()
+    }).orderBy("mensaje.creado_at","DESC").getMany()
   }
   /**
    * Metodo para filtrar por fecha de creacion los mensajes del 
@@ -85,7 +85,7 @@ export class MensajesService {
       userId:user.id
     }).where("CONVERT(mensaje.creado_at,char) like :creado_at",{
       creado_at:`%${creado_at}%`
-    }).orderBy("creado_at","DESC").getMany()
+    }).orderBy("mensaje.creado_at","DESC").getMany()
   }
 
   update(id: number, updateMensajeDto: UpdateMensajeDto) {
