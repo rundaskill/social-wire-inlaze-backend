@@ -1,5 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { LoginInterface } from '../models/auth/auth.interface';
 import { User } from '../user/entities/user.entity';
 import { UserService } from '../user/user.service';
 import { LoginAuthDto } from './dto/login-auth.dto';
@@ -12,7 +13,7 @@ export class AuthService {
    ){
 
   }
-  validateUser(login:LoginAuthDto){
+  validateUser(login:LoginAuthDto):Promise<LoginInterface|BadRequestException>{
     const msError="Correo o contraseña incorrecta"
     return this.usersService.findOne(login.email).then((user)=>{
       if (user.password===login.password) {
@@ -23,7 +24,7 @@ export class AuthService {
       throw new BadRequestException(msError);
     })
   }
-  generateToken(user: User) {
+  generateToken(user: User):LoginInterface {
     const { password, ...userData } = user;
     const payload = { ...userData, sub: user.id };
     return {

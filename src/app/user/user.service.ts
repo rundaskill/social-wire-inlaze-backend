@@ -4,6 +4,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
+import { HttpGood } from '../models/http/http.interface';
 @Injectable()
 export class UserService {
   
@@ -14,13 +15,14 @@ export class UserService {
    * Crear un usuario en el sistema
    * @returns BadRequestException
    */
-  async create(crearUsuarioDto:CreateUserDto):Promise<BadRequestException | any>{
+  async create(crearUsuarioDto:CreateUserDto):Promise<BadRequestException | HttpGood<User>>{
   
       const addUser= this.usersRepository.create(crearUsuarioDto)
       return this.usersRepository.save(addUser).then<any|BadRequestException>(()=>{
+        const {password,...user}=addUser;
         return {
           message: 'Se creó el usuario',
-          dato: addUser,
+          dato: user,
           created: true,
         }
       })
