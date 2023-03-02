@@ -1,0 +1,1448 @@
+{
+	"info": {
+		"_postman_id": "08fee4a9-16d9-4a98-a878-bff6291b46cf",
+		"name": "social wires",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Creaer usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\":\"Rundaskill\",\r\n    \"full_name\":\"Anderson Daniel Chavez Vargas\",\r\n    \"email\":\"rundaskill@inlaze.com\",\r\n    \"password\":\"secret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}user",
+							"host": [
+								"{{api}}user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nickname\":\"Rundaskill\",\r\n    \"full_name\":\"Anderson Daniel Chavez Vargas\",\r\n    \"email\":\"rundaskill@inlaze.com\",\r\n    \"password\":\"secret\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}user",
+									"host": [
+										"{{api}}user"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "261"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"105-JtPkMU3twuNUuGsdnTtZWGwtlQg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 22:23:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Se creó el usuario\",\n    \"dato\": {\n        \"nickname\": \"Rundaskill\",\n        \"full_name\": \"Anderson Daniel Chavez Vargas\",\n        \"email\": \"rundaskill@inlaze.com\",\n        \"deleted_at\": null,\n        \"id\": 1,\n        \"creado_at\": \"2023-03-02T22:23:45.223Z\",\n        \"updated_at\": \"2023-03-02T22:23:45.223Z\"\n    },\n    \"created\": true\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nickname\":\"Rundaskill\",\r\n    \"full_name\":\"Anderson Daniel Chavez Vargas\",\r\n    \"email\":\"rundaskill@inlaze.com\",\r\n    \"password\":\"secret\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}user",
+									"host": [
+										"{{api}}user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"66-fcXtApgnYhGB5T8Z8XLI7q03MYg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:05:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"La cuenta con este correo electrónico ya existe.\",\n    \"error\": \"Bad Request\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{api}}user",
+							"host": [
+								"{{api}}user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}user",
+									"host": [
+										"{{api}}user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "785"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"311-e2crg4ZSaWrzDC4JBybQUWUEC/c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:05:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"nickname\": \"Rundaskill\",\n        \"full_name\": \"Anderson Daniel Chavez Vargas\",\n        \"email\": \"rundaskill@inlaze.com\",\n        \"password\": \"secret\",\n        \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n    },\n    {\n        \"id\": 4,\n        \"nickname\": \"rundad\",\n        \"full_name\": \"sdf\",\n        \"email\": \"1rundaskill@inlaze.com\",\n        \"password\": \"2323\",\n        \"creado_at\": \"2023-03-02T16:28:55.713Z\"\n    },\n    {\n        \"id\": 6,\n        \"nickname\": \"Rundaskill\",\n        \"full_name\": \"Anderson Daniel Chavez Vargas\",\n        \"email\": \"3rundaskill@inlaze.com\",\n        \"password\": \"secret\",\n        \"creado_at\": \"2023-03-02T20:06:31.871Z\"\n    },\n    {\n        \"id\": 7,\n        \"nickname\": \"Maira\",\n        \"full_name\": \"omaira zambrano\",\n        \"email\": \"maira@hotmail.es\",\n        \"password\": \"123\",\n        \"creado_at\": \"2023-03-02T21:32:58.994Z\"\n    },\n    {\n        \"id\": 8,\n        \"nickname\": \"Rundaskill\",\n        \"full_name\": \"Anderson Daniel Chavez Vargas\",\n        \"email\": \"2rundaskill@inlaze.com\",\n        \"password\": \"secret\",\n        \"creado_at\": \"2023-03-02T23:04:57.304Z\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var json = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"token\", `${json.access_token}`);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rundaskill@inlaze.com\",\r\n    \"password\":\"secret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}auth",
+							"host": [
+								"{{api}}auth"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"rundaskill@inlaze.com\",\r\n    \"password\":\"secret\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}auth",
+									"host": [
+										"{{api}}auth"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "507"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1fb-tVM3LNxm1hoBKh2gX/CcIIn8gvE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 22:31:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiJSdW5kYXNraWxsIiwiZnVsbF9uYW1lIjoiQW5kZXJzb24gRGFuaWVsIENoYXZleiBWYXJnYXMiLCJlbWFpbCI6InJ1bmRhc2tpbGxAaW5sYXplLmNvbSIsImNyZWFkb19hdCI6IjIwMjMtMDMtMDJUMTY6MjA6MDYuMTU2WiIsInN1YiI6MSwiaWF0IjoxNjc3Nzk2MzEwLCJleHAiOjE2Nzc4ODI3MTB9.VRqIv6-mQRnN9kF4X-CHrPTXz2n-4_S_laRQGlWInnM\",\n    \"user\": {\n        \"id\": 1,\n        \"nickname\": \"Rundaskill\",\n        \"full_name\": \"Anderson Daniel Chavez Vargas\",\n        \"email\": \"rundaskill@inlaze.com\",\n        \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n    }\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"rundaskill@inlaze.com\",\r\n    \"password\":\"2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}auth",
+									"host": [
+										"{{api}}auth"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-iZLnb+/qj+x9pkTcB5S9BFqqEJU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:06:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Correo o contraseña incorrecta\",\n    \"error\": \"Bad Request\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mensajes",
+			"item": [
+				{
+					"name": "Crear mensaje",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Hola\",\r\n    \"message\":\"Prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}mensajes",
+							"host": [
+								"{{api}}mensajes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Hola\",\r\n    \"message\":\"Prueba\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}mensajes",
+									"host": [
+										"{{api}}mensajes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "350"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15e-XXIUUOLMslN5C3mTjp4dbaphqmU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:07:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Se creó el mensaje\",\n    \"dato\": {\n        \"title\": \"Hola\",\n        \"message\": \"Prueba\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        },\n        \"deleted_at\": null,\n        \"id\": 5,\n        \"creado_at\": \"2023-03-02T23:07:30.705Z\",\n        \"updated_at\": \"2023-03-02T23:07:30.705Z\"\n    },\n    \"created\": true\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Hola\",\r\n    \"message\":\"Prueba\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}mensajes",
+									"host": [
+										"{{api}}mensajes"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:07:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get todos los  Mensaje",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{api}}mensajes",
+							"host": [
+								"{{api}}mensajes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}mensajes",
+									"host": [
+										"{{api}}mensajes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1450"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5aa-Xp/Q3P9Bcs8PXxDH3S/F0Fx2y00\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:07:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 5,\n        \"title\": \"Hola\",\n        \"message\": \"Prueba\",\n        \"creado_at\": \"2023-03-02T23:07:30.705Z\",\n        \"updated_at\": \"2023-03-02T23:07:30.705Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"title\": \"hola\",\n        \"message\": \"me \",\n        \"creado_at\": \"2023-03-02T21:33:39.981Z\",\n        \"updated_at\": \"2023-03-02T21:33:39.981Z\",\n        \"user\": {\n            \"id\": 7,\n            \"nickname\": \"Maira\",\n            \"full_name\": \"omaira zambrano\",\n            \"email\": \"maira@hotmail.es\",\n            \"password\": \"123\",\n            \"creado_at\": \"2023-03-02T21:32:58.994Z\"\n        }\n    },\n    {\n        \"id\": 3,\n        \"title\": \"lol\",\n        \"message\": \"xd\",\n        \"creado_at\": \"2023-03-02T21:29:12.372Z\",\n        \"updated_at\": \"2023-03-02T21:29:12.372Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 2,\n        \"title\": \"ptueba\",\n        \"message\": \"sdf\",\n        \"creado_at\": \"2023-03-02T21:28:58.616Z\",\n        \"updated_at\": \"2023-03-02T21:28:58.616Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Hola\",\n        \"message\": \"Prueba\",\n        \"creado_at\": \"2023-03-02T17:02:49.767Z\",\n        \"updated_at\": \"2023-03-02T17:02:49.767Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    }\n]"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}mensajes",
+									"host": [
+										"{{api}}mensajes"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:14:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Filtro de mensajes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{api}}mensajes?title=como&creado_at=2023-02",
+							"host": [
+								"{{api}}mensajes"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "como"
+								},
+								{
+									"key": "creado_at",
+									"value": "2023-02"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}mensajes?title=h&creado_at",
+									"host": [
+										"{{api}}mensajes"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "h"
+										},
+										{
+											"key": "creado_at",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1450"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5aa-Xp/Q3P9Bcs8PXxDH3S/F0Fx2y00\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:13:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 5,\n        \"title\": \"Hola\",\n        \"message\": \"Prueba\",\n        \"creado_at\": \"2023-03-02T23:07:30.705Z\",\n        \"updated_at\": \"2023-03-02T23:07:30.705Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"title\": \"hola\",\n        \"message\": \"me \",\n        \"creado_at\": \"2023-03-02T21:33:39.981Z\",\n        \"updated_at\": \"2023-03-02T21:33:39.981Z\",\n        \"user\": {\n            \"id\": 7,\n            \"nickname\": \"Maira\",\n            \"full_name\": \"omaira zambrano\",\n            \"email\": \"maira@hotmail.es\",\n            \"password\": \"123\",\n            \"creado_at\": \"2023-03-02T21:32:58.994Z\"\n        }\n    },\n    {\n        \"id\": 3,\n        \"title\": \"lol\",\n        \"message\": \"xd\",\n        \"creado_at\": \"2023-03-02T21:29:12.372Z\",\n        \"updated_at\": \"2023-03-02T21:29:12.372Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 2,\n        \"title\": \"ptueba\",\n        \"message\": \"sdf\",\n        \"creado_at\": \"2023-03-02T21:28:58.616Z\",\n        \"updated_at\": \"2023-03-02T21:28:58.616Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Hola\",\n        \"message\": \"Prueba\",\n        \"creado_at\": \"2023-03-02T17:02:49.767Z\",\n        \"updated_at\": \"2023-03-02T17:02:49.767Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    }\n]"
+						},
+						{
+							"name": "No encuentra datos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}mensajes?title=como&creado_at=2023-02",
+									"host": [
+										"{{api}}mensajes"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "como"
+										},
+										{
+											"key": "creado_at",
+											"value": "2023-02"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:14:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}mensajes?title=como&creado_at=2023-02",
+									"host": [
+										"{{api}}mensajes"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "como"
+										},
+										{
+											"key": "creado_at",
+											"value": "2023-02"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:14:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get los mensajes del usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{api}}mensajes/me",
+							"host": [
+								"{{api}}mensajes"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}mensajes/me",
+									"host": [
+										"{{api}}mensajes"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1183"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"49f-MABWT6AZFDj0Qaq8+O9NNgza/0o\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:14:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 5,\n        \"title\": \"Hola\",\n        \"message\": \"Prueba\",\n        \"creado_at\": \"2023-03-02T23:07:30.705Z\",\n        \"updated_at\": \"2023-03-02T23:07:30.705Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 3,\n        \"title\": \"lol\",\n        \"message\": \"xd\",\n        \"creado_at\": \"2023-03-02T21:29:12.372Z\",\n        \"updated_at\": \"2023-03-02T21:29:12.372Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 2,\n        \"title\": \"ptueba\",\n        \"message\": \"sdf\",\n        \"creado_at\": \"2023-03-02T21:28:58.616Z\",\n        \"updated_at\": \"2023-03-02T21:28:58.616Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Hola\",\n        \"message\": \"Prueba\",\n        \"creado_at\": \"2023-03-02T17:02:49.767Z\",\n        \"updated_at\": \"2023-03-02T17:02:49.767Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    }\n]"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}mensajes/me",
+									"host": [
+										"{{api}}mensajes"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:14:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get los mensajes del usuario por fecha",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{api}}mensajes/me?creado_at=2023-02",
+							"host": [
+								"{{api}}mensajes"
+							],
+							"path": [
+								"me"
+							],
+							"query": [
+								{
+									"key": "creado_at",
+									"value": "2023-02"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}mensajes/me?creado_at=2023",
+									"host": [
+										"{{api}}mensajes"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "creado_at",
+											"value": "2023"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:15:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}mensajes/me?creado_at=2023",
+									"host": [
+										"{{api}}mensajes"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "creado_at",
+											"value": "2023"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1450"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5aa-Xp/Q3P9Bcs8PXxDH3S/F0Fx2y00\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:16:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 5,\n        \"title\": \"Hola\",\n        \"message\": \"Prueba\",\n        \"creado_at\": \"2023-03-02T23:07:30.705Z\",\n        \"updated_at\": \"2023-03-02T23:07:30.705Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"title\": \"hola\",\n        \"message\": \"me \",\n        \"creado_at\": \"2023-03-02T21:33:39.981Z\",\n        \"updated_at\": \"2023-03-02T21:33:39.981Z\",\n        \"user\": {\n            \"id\": 7,\n            \"nickname\": \"Maira\",\n            \"full_name\": \"omaira zambrano\",\n            \"email\": \"maira@hotmail.es\",\n            \"password\": \"123\",\n            \"creado_at\": \"2023-03-02T21:32:58.994Z\"\n        }\n    },\n    {\n        \"id\": 3,\n        \"title\": \"lol\",\n        \"message\": \"xd\",\n        \"creado_at\": \"2023-03-02T21:29:12.372Z\",\n        \"updated_at\": \"2023-03-02T21:29:12.372Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 2,\n        \"title\": \"ptueba\",\n        \"message\": \"sdf\",\n        \"creado_at\": \"2023-03-02T21:28:58.616Z\",\n        \"updated_at\": \"2023-03-02T21:28:58.616Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Hola\",\n        \"message\": \"Prueba\",\n        \"creado_at\": \"2023-03-02T17:02:49.767Z\",\n        \"updated_at\": \"2023-03-02T17:02:49.767Z\",\n        \"user\": {\n            \"id\": 1,\n            \"nickname\": \"Rundaskill\",\n            \"full_name\": \"Anderson Daniel Chavez Vargas\",\n            \"email\": \"rundaskill@inlaze.com\",\n            \"password\": \"secret\",\n            \"creado_at\": \"2023-03-02T16:20:06.156Z\"\n        }\n    }\n]"
+						},
+						{
+							"name": "no encuentra datos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{api}}mensajes/me?creado_at=2023-02",
+									"host": [
+										"{{api}}mensajes"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "creado_at",
+											"value": "2023-02"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Mar 2023 23:16:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				}
+			]
+		}
+	]
+}
