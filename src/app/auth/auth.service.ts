@@ -13,6 +13,12 @@ export class AuthService {
    ){
 
   }
+  /**
+   * Validar usuario
+   * Busca el usuario por el correo y valida si la contraseña es igual
+   * @param login LoginAuthDto
+   * @returns Promise<LoginInterface|BadRequestException>
+   */
   validateUser(login:LoginAuthDto):Promise<LoginInterface|BadRequestException>{
     const msError="Correo o contraseña incorrecta"
     return this.usersService.findOne(login.email).then((user)=>{
@@ -24,6 +30,11 @@ export class AuthService {
       throw new BadRequestException(msError);
     })
   }
+  /**
+   * Genera el token del usaurio
+   * @param user User
+   * @returns LoginInterface
+   */
   generateToken(user: User):LoginInterface {
     const { password, ...userData } = user;
     const payload = { ...userData, sub: user.id };
