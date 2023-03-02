@@ -41,12 +41,19 @@ export class MensajesService {
     }).getMany()
   }
   findMeMensaje(user:any) {
-    console.log(user);
-    
     return this.messageRepository.createQueryBuilder("mensaje")
     .leftJoinAndSelect("mensaje.user", "user")
     .where("user.id = :userId",{
       userId:user.id
+    }).getMany()
+  }
+  findMeMensajeFiltro(user:any,creado_at){
+    return this.messageRepository.createQueryBuilder("mensaje")
+    .leftJoinAndSelect("mensaje.user", "user")
+    .where("user.id = :userId",{
+      userId:user.id
+    }).where("CONVERT(mensaje.creado_at,char) like :creado_at",{
+      creado_at:`%${creado_at}%`
     }).getMany()
   }
 

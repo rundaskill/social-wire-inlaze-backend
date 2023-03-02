@@ -28,11 +28,15 @@ export class MensajesController {
   }
   @UseGuards(JwtAuthGuard)
   @Get("me")
-  findMeMensajes(@Request() req){
-    console.log(req.user);
-    
+  findMeMensajes(@Query() params:{creado_at:string},@Request() req){
+    if (params?.creado_at) {
+      return this.mensajesService.findMeMensajeFiltro(req.user,params?.creado_at);
+    } 
+   
     return this.mensajesService.findMeMensaje(req.user)
   }
+
+ 
   // @Get(':id')
   // findOne(@Param('id') id: string) {
   //   return this.mensajesService.findOne(+id);
