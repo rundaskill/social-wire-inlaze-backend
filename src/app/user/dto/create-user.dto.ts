@@ -13,10 +13,10 @@ import {
   } from 'class-validator';
 export class CreateUserDto {
     @IsNotEmpty()
-    user: string;
+    nickname: string;
 
     @IsNotEmpty()
-    name: string;
+    full_name: string;
 
     @IsEmail()
     email: string;

@@ -1,10 +1,12 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { InjectRepository, } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateMensajeDto } from './dto/create-mensaje.dto';
 import { UpdateMensajeDto } from './dto/update-mensaje.dto';
 import { Mensaje } from './entities/mensaje.entity';
-
+import { ILike } from "typeorm"
+import { FiltroMensajeDto } from './dto/filtro-mensaje.dto';
+import { User } from '../user/entities/user.entity';
 @Injectable()
 export class MensajesService {
   constructor(@InjectRepository(Mensaje)
@@ -27,12 +29,25 @@ export class MensajesService {
     return this.messageRepository.find({
       relations:{
         user:true
-      }
+      }      
     });
   }
-
-  findOne(id: number) {
-    return `This action returns a #${id} mensaje`;
+  findFilter(filtro:FiltroMensajeDto){
+    return this.messageRepository.createQueryBuilder("mensaje")
+    .leftJoinAndSelect("mensaje.user", "user").where("mensaje.title like :title",{
+      title:`%${filtro.title}%`
+    }).orWhere("CONVERT(mensaje.creado_at,char) like :creado_at",{
+      creado_at:`%${filtro.creado_at}%`
+    }).getMany()
+  }
+  findMeMensaje(user:any) {
+    console.log(user);
+    
+    return this.messageRepository.createQueryBuilder("mensaje")
+    .leftJoinAndSelect("mensaje.user", "user")
+    .where("user.id = :userId",{
+      userId:user.id
+    }).getMany()
   }
 
   update(id: number, updateMensajeDto: UpdateMensajeDto) {
