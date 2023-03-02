@@ -7,12 +7,18 @@ import { Mensaje } from './entities/mensaje.entity';
 import { ILike } from "typeorm"
 import { FiltroMensajeDto } from './dto/filtro-mensaje.dto';
 import { User } from '../user/entities/user.entity';
+import { HttpGood } from '../models/http/http.interface';
 @Injectable()
 export class MensajesService {
   constructor(@InjectRepository(Mensaje)
   private messageRepository: Repository<Mensaje>) {
   }
-  create(createMensajeDto: CreateMensajeDto) {
+  /**
+   * Metodo para crear un mensaje
+   * @param createMensajeDto CreateMensajeDto
+   * @returns Promise<HttpGood<Mensaje>|BadRequestException>
+   */
+  create(createMensajeDto: CreateMensajeDto):Promise<HttpGood<Mensaje>|BadRequestException> {
     const addMessage=this.messageRepository.create(createMensajeDto)
     return this.messageRepository.save(addMessage).then((message)=>{
       return {
@@ -25,43 +31,64 @@ export class MensajesService {
     });
   }
 
-  findAll() {
+  /**
+   * Metodo para buscar todos los mensaje con su usuario
+   * y lo organiza decendiente de la fecha de creacion
+   * @returns Promise<Mensaje[]> 
+   */
+  findAll():Promise<Mensaje[]> {
     return this.messageRepository.find({
       relations:{
         user:true
+      },
+      order:{
+        creado_at:"DESC"
       }      
     });
   }
-  findFilter(filtro:FiltroMensajeDto){
+  /**
+   * Metodo para filtrar los mensajes y los organiza decente a la fecha de creacion
+   * @param filtro FiltroMensajeDto
+   * @returns Promise<Mensaje[]>
+   */
+  findFilter(filtro:FiltroMensajeDto):Promise<Mensaje[]>{
     return this.messageRepository.createQueryBuilder("mensaje")
     .leftJoinAndSelect("mensaje.user", "user").where("mensaje.title like :title",{
       title:`%${filtro.title}%`
     }).orWhere("CONVERT(mensaje.creado_at,char) like :creado_at",{
       creado_at:`%${filtro.creado_at}%`
-    }).getMany()
+    }).orderBy("creado_at","DESC").getMany()
   }
-  findMeMensaje(user:any) {
+  /**
+   * Metodo para obtener todo los mensaje del usuario
+   * que tiene la seccion activa
+   * @param user User
+   * @returns Promise<Mensaje[]>
+   */
+  findMeMensaje(user:User):Promise<Mensaje[]> {
     return this.messageRepository.createQueryBuilder("mensaje")
     .leftJoinAndSelect("mensaje.user", "user")
     .where("user.id = :userId",{
       userId:user.id
-    }).getMany()
+    }).orderBy("creado_at","DESC").getMany()
   }
-  findMeMensajeFiltro(user:any,creado_at){
+  /**
+   * Metodo para filtrar por fecha de creacion los mensajes del 
+   * usuario que tiene la seccion activa
+   * @param user User
+   * @returns Promise<Mensaje[]>
+   */
+  findMeMensajeFiltro(user:any,creado_at):Promise<Mensaje[]>{
     return this.messageRepository.createQueryBuilder("mensaje")
     .leftJoinAndSelect("mensaje.user", "user")
     .where("user.id = :userId",{
       userId:user.id
     }).where("CONVERT(mensaje.creado_at,char) like :creado_at",{
       creado_at:`%${creado_at}%`
-    }).getMany()
+    }).orderBy("creado_at","DESC").getMany()
   }
 
   update(id: number, updateMensajeDto: UpdateMensajeDto) {
     return `This action updates a #${id} mensaje`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} mensaje`;
   }
 }
