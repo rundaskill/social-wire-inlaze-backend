@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn,CreateDateColumn,Index ,UpdateDateColumn, DeleteDateColumn} from 'typeorm';
+import { Mensaje } from 'src/app/mensajes/entities/mensaje.entity';
+import { Entity, Column, PrimaryGeneratedColumn,CreateDateColumn,Index ,UpdateDateColumn, DeleteDateColumn, OneToMany} from 'typeorm';
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
@@ -24,5 +25,7 @@ export class User {
 
     @DeleteDateColumn({ select: false })
     deleted_at: Date;
+    @OneToMany(() => Mensaje, (mensaje) => mensaje.user)
+    mensaje: Mensaje[]
 }
 
