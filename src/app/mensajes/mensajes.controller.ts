@@ -10,12 +10,23 @@ import { JwtAuthGuard } from '../guards/auth/jwt-auth.guard';
 export class MensajesController {
   constructor(private readonly mensajesService: MensajesService) {}
 
+  /**
+   * Ruta para Crear
+   * @param createMensajeDto CreateMensajeDto
+   * @param req 
+   * @returns 
+   */
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createMensajeDto: CreateMensajeDto,@Request() req) {    
     return this.mensajesService.create({...createMensajeDto,user:req.user});
   }
-
+  /**
+   * Ruta para buscar todos los mensajes o filtrar
+   * @param params { title:string,creado_at:string }
+   * @param req 
+   * @returns 
+   */
   @UseGuards(JwtAuthGuard)
   @Get()
   findAll(@Query() params:{title:string,creado_at:string}) {
@@ -25,6 +36,12 @@ export class MensajesController {
     return this.mensajesService.findAll();
 
   }
+   /**
+   * Ruta para buscar y filtrar los mensajes del usuario que tenga la sección  activa
+   * @param params { title:string,creado_at:string }
+   * @param req 
+   * @returns 
+   */
   @UseGuards(JwtAuthGuard)
   @Get("me")
   findMeMensajes(@Query() params:{creado_at:string},@Request() req){

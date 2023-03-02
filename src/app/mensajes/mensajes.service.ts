@@ -61,7 +61,7 @@ export class MensajesService {
   }
   /**
    * Metodo para obtener todo los mensaje del usuario
-   * que tiene la seccion activa
+   * que tiene la sección  activa
    * @param user User
    * @returns Promise<Mensaje[]>
    */
@@ -74,7 +74,7 @@ export class MensajesService {
   }
   /**
    * Metodo para filtrar por fecha de creacion los mensajes del 
-   * usuario que tiene la seccion activa
+   * usuario que tiene la sección  activa
    * @param user User
    * @returns Promise<Mensaje[]>
    */
