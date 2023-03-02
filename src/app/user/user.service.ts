@@ -40,15 +40,13 @@ export class UserService {
     return this.usersRepository.find();
   }
 
+  /**
+   *  Buscar el usaurio por el correo
+   * @returns Promise<User>
+  */
   findOne(email: string):Promise<User> {
    return this.usersRepository.findOneBy({email})
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
-  }
+ 
 }
