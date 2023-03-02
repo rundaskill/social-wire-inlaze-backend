@@ -21,7 +21,7 @@
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-  
+
 ### Api Social Wires
 
 ### Descripción
@@ -36,7 +36,7 @@ El sistema está utilizando nestjs para Backend y en gestor de base de datos mys
 
 - Docker
 - Docker compose
-- Portman: Para mirar la documentación de las api
+- Postman: Para mirar la documentación de las api
 
 ### Installation
 
